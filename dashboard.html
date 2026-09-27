@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Demha</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="global-header">
+        <img src="images/logo.png" alt="Demha Logo" class="brand-logo">
+        <div class="header-actions">
+            <button onclick="openRequestModal()" class="btn-request">Request Change</button>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-title-area">
+            <h1>Dashboard Overview</h1>
+            <p class="user-email-display" id="userEmailDisplay">Loading profile...</p>
+        </div>
+
+        <div class="card">
+            <h3>Business Settings</h3>
+            <p class="subtitle">Your verified active configuration</p>
+            <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" id="businessName" readonly class="readonly-input" placeholder="Loading...">
+            </div>
+            <div class="form-group">
+                <label>Google Profile Review Link</label>
+                <input type="url" id="googleLink" readonly class="readonly-input" placeholder="Loading...">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Send Review Request</h3>
+            <p class="subtitle">Trigger a feedback request email directly to your customer</p>
+            <div class="form-group">
+                <label>Customer Name</label>
+                <input type="text" id="customerName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Customer Email</label>
+                <input type="email" id="customerEmail" placeholder="john@example.com">
+            </div>
+            <button onclick="sendReviewRequest()" class="btn-primary">Send Review Request</button>
+        </div>
+
+        <div class="card">
+            <div class="feedback-card-header">
+                <div>
+                    <h3>Customer Feedback Inbox</h3>
+                    <p class="subtitle" style="margin-bottom:0;">Private feedback submitted by clients</p>
+                </div>
+                <span class="badge-notice">Auto-deletes after 1 week</span>
+            </div>
+            <div id="feedbackList" style="margin-top: 16px;">
+                <p style="color: var(--text-muted); text-align: center; padding: 20px;">Loading feedback...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Change Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <h3 style="margin-top:0;">Request Setting Change</h3>
+            <p class="subtitle">Send details to the platform administrator.</p>
+            <div class="form-group">
+                <label>New Business Name</label>
+                <input type="text" id="newBusinessName" placeholder="Updated Business Name">
+            </div>
+            <div class="form-group">
+                <label>New Google Review Link</label>
+                <input type="url" id="newGoogleLink" placeholder="https://maps.app.goo.gl/...">
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button onclick="submitChangeRequest()" class="btn-primary" style="flex: 1;">Submit Request</button>
+                <button onclick="closeRequestModal()" class="btn-logout" style="flex: 1; text-align: center;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

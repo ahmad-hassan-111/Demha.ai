@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demha.ai - Automated Reputation & Review Management</title>
+    <!-- Linking Separate CSS File -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <!-- Clicking the logo reloads the website -->
+        <a href="index.html" class="logo-container" style="text-decoration: none;">
+            <img src="images/logo.png" alt="Demha Logo" class="brand-logo" onerror="this.style.display='none'">
+            <span class="logo-text">Demha<span>.ai</span></span>
+        </a>
+        
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="nav-highlight">
+                <i class="fa-solid fa-gift"></i> <span>Get Your First Month Free</span>
+            </div>
+            <a href="#requestSection" class="login-btn" style="background: linear-gradient(135deg, #d4af37 0%, #b89123 100%); color: #fff; border: none; text-decoration: none;">Request Account</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Exclusive for Local Service Businesses</div>
+        <h1>Protect Your Reputation. <span>Automate 5-Star Reviews.</span></h1>
+        <p>Demha intercepts negative feedback privately before it hurts your Google rating, while automatically driving your happiest clients to your public profile.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Review Shield</h3>
+            <p>Unhappy customers (1-3 stars) are routed to a private feedback form so you can resolve issues internally.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-star"></i>
+            <h3>Google Growth</h3>
+            <p>Delighted customers (4-5 stars) are instantly redirected to your Google Business profile to boost local SEO.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Automated Pipeline</h3>
+            <p>Seamlessly integrates with your booking workflow so review requests trigger right after service completion.</p>
+        </div>
+    </section>
+
+    <!-- Blog / Insights Preview Section -->
+    <section class="blog-preview-section" style="max-width: 900px; margin: 0 auto 40px auto; padding: 0 20px;">
+        <div class="feature-card" style="background: linear-gradient(135deg, #fffdf9 0%, #f7f2e6 100%); border-color: rgba(212, 175, 55, 0.5);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="background: var(--gold-primary); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Demha Insights</span>
+                <span style="font-size: 13px; color: var(--text-muted);">2 min read</span>
+            </div>
+            <h3 style="font-size: 22px; margin-bottom: 10px; color: var(--text-main);">Why Local Service Businesses Lose 70% of Potential Google Reviews</h3>
+            <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 16px;">Most clients are happy after a service, but they simply forget to leave a review because asking manually is awkward and inconsistent. Demha automates the exact sequence right after appointment completion to capture high ratings effortlessly.</p>
+            <div style="font-size: 14px; font-weight: 600; color: var(--gold-dark); display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-shield-halved"></i> Automated reputation building made seamless for modern providers.
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>What types of businesses is Demha built for?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                It is designed exclusively for local service providers (such as dental clinics, contractors, HVAC, salons, and spas) where appointment bookings automatically capture client contact information.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Do I need any technical skills to set this up?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Not at all! We handle the entire database and webhook setup for you so everything works seamlessly out of the box without any technical hassle.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How does Demha stop negative reviews from hitting Google?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                When a customer clicks 1, 2, or 3 stars on our feedback screen, they are instantly directed to a private feedback form instead of Google. This alerts your team internally so you can resolve the complaint directly.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How quickly do review requests reach my clients?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Through our automated webhooks, review requests land in your client's inbox within seconds to a few minutes after their service appointment concludes, while their experience is still fresh.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Can I use Demha for multiple locations or staff members?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Yes! The system can be configured to track reviews and feedback across different service providers or business branches seamlessly from your dashboard.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How can I make an account on Demha and what are the prices?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Since Demha is a managed onboarding platform, accounts are created via an account request form below. <strong>Your first month is completely free!</strong> Moving forward, there is a $299 one-time setup fee and a $99/month maintenance fee. Once ready, our team will email your secure login details.
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Account Section -->
+    <section id="requestSection" style="max-width: 900px; margin: 0 auto 90px auto; padding: 0 20px; scroll-margin-top: 110px;">
+        <div class="feature-card" style="background: linear-gradient(135deg, #fffdf9 0%, #fdf8eb 100%); border-color: var(--gold-primary); padding: 40px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 28px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Request Your Demha Account</h2>
+                <p style="font-size: 15px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Fill out your details below. Your first month is completely free ($299 setup & $99/mo apply later). Our team will set everything up and email your credentials.</p>
+            </div>
+
+            <form onsubmit="submitAccountRequest(event)" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: var(--text-main);">Owner Name</label>
+                    <input type="text" id="reqName" placeholder="Enter your full name" required style="width: 100%; padding: 12px 15px; border-radius: 10px; border: 1.5px solid var(--border-gold); background: #fff; font-size: 14px;">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: var(--text-main);">Business Email</label>
+                    <input type="email" id="reqEmail" placeholder="Enter your email address" required style="width: 100%; padding: 12px 15px; border-radius: 10px; border: 1.5px solid var(--border-gold); background: #fff; font-size: 14px;">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: var(--text-main);">Business Name</label>
+                    <input type="text" id="reqBusiness" placeholder="Enter your business name" required style="width: 100%; padding: 12px 15px; border-radius: 10px; border: 1.5px solid var(--border-gold); background: #fff; font-size: 14px;">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: var(--text-main);">Google Profile Link</label>
+                    <input type="url" id="reqProfile" placeholder="https://maps.app.goo.gl/..." required style="width: 100%; padding: 12px 15px; border-radius: 10px; border: 1.5px solid var(--border-gold); background: #fff; font-size: 14px;">
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 16px; background: linear-gradient(135deg, #d4af37 0%, #b89123 100%); color: #fff; border: none; cursor: pointer;">
+                    Request Account
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Demha.ai. All rights reserved. Built exclusively for local service providers.
+    </footer>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+/* Global Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Base Fade-in Animation Classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Animation for Badges on Hover */
+@keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+body {
+    animation: fadeIn 0.8s ease-out forwards;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #faf8f5;
+    color: #2c2c2c;
+    margin: 0;
+    padding: 0;
+}
+
+/* Section & Card Fade-ins */
+header, .hero, .features, .blog-preview-section, .faq-section, #requestSection {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Feature Cards & FAQs Interactive Hover Effects */
+.feature-card, .faq-item {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.2);
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Colors & Variables */
+:root {
+    --gold-primary: #d4af37;
+    --gold-dark: #b89123;
+    --text-main: #2c2c2c;
+    --text-muted: #666666;
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --box-bg: #ffffff;
+}
+
+/* Header / Navbar Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Logo Size Controlled */
+.brand-logo {
+    height: 38px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.logo-text span {
+    color: var(--gold-primary);
+}
+
+/* "Get Your First Month Free" Badge Styling & Hover Up/Down Effect */
+.nav-highlight {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(184, 145, 35, 0.18) 100%);
+    color: var(--gold-dark);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1.5px solid var(--border-gold);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.nav-highlight:hover {
+    animation: floatUpDown 1.2s ease-in-out infinite;
+    border-color: var(--gold-primary);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.25);
+}
+
+.login-btn {
+    padding: 8px 18px;
+    background: transparent;
+    border: 1.5px solid var(--gold-primary);
+    color: var(--gold-dark);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: var(--gold-primary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--gold-dark);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--gold-primary);
+}
+
+.hero p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+}
+
+.feature-card {
+    background: var(--box-bg);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.feature-card i {
+    font-size: 28px;
+    color: var(--gold-primary);
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* FAQ Section */
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--text-main);
+}
+
+.faq-item {
+    background: var(--box-bg);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 20px;
+    text-align: left;
+    background: none;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    padding: 0 20px 18px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Forced Golden Footer Styles */
+footer {
+    background: linear-gradient(135deg, #fffdf9 0%, #f7f2e6 100%) !important;
+    color: var(--gold-dark) !important;
+    text-align: center !important;
+    padding: 40px 20px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-top: 1.5px solid var(--border-gold) !important;
+    margin-top: 60px !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}

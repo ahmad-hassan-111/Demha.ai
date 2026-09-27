@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Review | Demha</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/review.css">
+</head>
+<body>
+    <header class="global-header">
+        <img src="images/logo.png" alt="Demha Logo" class="brand-logo">
+    </header>
+
+    <div class="review-wrapper">
+        <div class="review-card">
+            <h1 id="businessTitle">How was your experience?</h1>
+            <p id="businessSubtitle">Please rate your service with us today.</p>
+            
+            <div id="starContainer" class="star-container">
+                <button onclick="handleRating(1)" class="star-btn">⭐</button>
+                <button onclick="handleRating(2)" class="star-btn">⭐</button>
+                <button onclick="handleRating(3)" class="star-btn">⭐</button>
+                <button onclick="handleRating(4)" class="star-btn">⭐</button>
+                <button onclick="handleRating(5)" class="star-btn">⭐</button>
+            </div>
+
+            <div id="feedbackFormContainer" class="hidden">
+                <div class="alert-box">
+                    We are truly sorry your experience wasn't great. Please let us know what went wrong so we can make it right.
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your Name</label>
+                    <input type="text" id="feedbackCustomerName" placeholder="Enter your full name" style="width: 100%; padding: 12px 14px; background: #ffffff; border: 1px solid var(--border-gold); border-radius: 10px; font-size: 14px; color: var(--text-main); box-sizing: border-box; margin-bottom: 14px;">
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">What can we improve?</label>
+                    <textarea id="privateFeedback" rows="4" placeholder="Share your feedback here..."></textarea>
+                </div>
+                <button onclick="submitPrivateFeedback()" class="btn-primary">Send Private Feedback</button>
+            </div> 
+
+            <div id="thankYouMessage" class="hidden" style="padding: 20px 0;">
+                <h3 style="color: #059669; font-size: 20px; margin-bottom: 8px;">Thank you!</h3>
+                <p style="color: var(--text-muted); font-size: 14px;">Your feedback has been sent directly to management.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/review.js"></script>
+</body>
+</html>
