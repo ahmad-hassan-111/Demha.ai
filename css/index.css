@@ -278,3 +278,36 @@ footer {
     width: 100% !important;
     box-sizing: border-box !important;
 }
+/* Mobile Responsive Fixes for Header Overlap */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    header > div:nth-child(2) {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px !important;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .nav-highlight {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .login-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+}
