@@ -3,9 +3,40 @@ const SUPABASE_ANON_KEY = 'sb_publishable_FCK9K17VSybey1cH0getCg_rx5Cw5uK';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUserEmail = '';
+let currentUserId = '';
+
+// Universal Golden & White Modal Injector & Trigger
+let modalCallback = null;
+function showCustomAlert(message, title = 'Demha.ai', callback = null) {
+    let modal = document.getElementById('customModal');
+    if (!modal) {
+        const modalHTML = `
+        <div id="customModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 9999; justify-content: center; align-items: center;">
+            <div style="background: linear-gradient(135deg, #fffdf9 0%, #fdf8eb 100%); border: 1.5px solid #d4af37; border-radius: 16px; padding: 30px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25); font-family: sans-serif;">
+                <h3 id="modalTitle" style="color: #1a1a1a; font-size: 20px; font-weight: 800; margin-bottom: 10px;">Demha.ai</h3>
+                <p id="modalMessage" style="color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 25px;"></p>
+                <button id="modalBtn" onclick="closeCustomModal()" style="background: linear-gradient(135deg, #d4af37 0%, #b89123 100%); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);">OK</button>
+            </div>
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        modal = document.getElementById('customModal');
+    }
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalMessage').textContent = message;
+    modal.style.display = 'flex';
+    modalCallback = callback;
+}
+
+window.closeCustomModal = function() {
+    const modal = document.getElementById('customModal');
+    if (modal) modal.style.display = 'none';
+    if (modalCallback) {
+        modalCallback();
+        modalCallback = null;
+    }
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Session Check
     const { data: { session } } = await supabaseClient.auth.getSession();
     if (!session) {
         window.location.href = 'login.html';
@@ -13,21 +44,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     currentUserEmail = session.user.email;
+    currentUserId = session.user.id;
     document.getElementById('userEmailDisplay').textContent = currentUserEmail;
 
-    // 2. Load and pre-fill existing business settings
-    const { data, error } = await supabaseClient
+    let { data, error } = await supabaseClient
         .from('businesses')
         .select('*')
-        .eq('email', currentUserEmail)
+        .eq('id', currentUserId)
         .single();
+
+    if (!data) {
+        const { data: fallbackData } = await supabaseClient
+            .from('businesses')
+            .select('*')
+            .eq('email', currentUserEmail)
+            .single();
+        data = fallbackData;
+    }
 
     if (data) {
         document.getElementById('businessName').value = data.business_name || '';
         document.getElementById('googleLink').value = data.google_link || '';
     }
 
-    // 3. Load incoming private feedback for this business
     const { data: feedbackData, error: feedbackError } = await supabaseClient
         .from('feedback')
         .select('*')
@@ -57,7 +96,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Modal Controls
 function openRequestModal() {
     document.getElementById('newBusinessName').value = document.getElementById('businessName').value;
     document.getElementById('newGoogleLink').value = document.getElementById('googleLink').value;
@@ -68,13 +106,12 @@ function closeRequestModal() {
     document.getElementById('requestModal').classList.remove('active');
 }
 
-// 4. Settings Change Request via Mailto/Gmail Web (Sends to ahmadhassannazeer111@gmail.com)
 function submitChangeRequest() {
     const newName = document.getElementById('newBusinessName').value.trim();
     const newLink = document.getElementById('newGoogleLink').value.trim();
 
     if (!newName || !newLink) {
-        alert('Please fill out both fields.');
+        showCustomAlert('Please fill out both fields.', 'Validation Error');
         return;
     } 
 
@@ -101,14 +138,13 @@ function submitChangeRequest() {
     closeRequestModal();
 }
 
-// 5. Send Review Request to Customer via Webhook
 async function sendReviewRequest() {
     const customerName = document.getElementById('customerName').value.trim();
     const customerEmail = document.getElementById('customerEmail').value.trim();
     const businessName = document.getElementById('businessName').value.trim();
 
     if (!customerName || !customerEmail || !businessName) {
-        alert('Please fill out your customer details first.');
+        showCustomAlert('Please fill out your customer details first.', 'Validation Error');
         return;
     }
 
@@ -128,27 +164,27 @@ async function sendReviewRequest() {
             body: formData
         });
 
-        alert('Review request sent successfully!');
+        showCustomAlert('Review request sent successfully!', 'Success!');
         document.getElementById('customerName').value = '';
         document.getElementById('customerEmail').value = '';
     } catch (err) {
         console.error(err);
         try {
+            const WEBHOOK_URL = 'https://hook.us2.make.com/v7aeqer50ceahfe5gif6vnd5uaqs3vy4';
             await fetch(WEBHOOK_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 body: formData
             });
-            alert('Review request sent successfully!');
+            showCustomAlert('Review request sent successfully!', 'Success!');
             document.getElementById('customerName').value = '';
             document.getElementById('customerEmail').value = '';
         } catch (e) {
-            alert('Failed to send review request. Please check connection.');
+            showCustomAlert('Failed to send review request. Please check connection.', 'Error');
         }
     }
 }
 
-// 6. Logout Function
 async function logout() {
     await supabaseClient.auth.signOut();
     window.location.href = 'login.html';
