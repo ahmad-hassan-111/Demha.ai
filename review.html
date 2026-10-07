@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Feedback | Demha.ai</title>
+    <title>Customer Feedback | Demha</title>
     <!-- Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="css/review.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .review-wrapper { flex: 1; }
+    </style>
 </head>
 <body>
-    <header class="global-header">
-        <a href="index.html" class="logo-container" style="text-decoration: none;">
+    <header class="global-header" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+        <a href="index.html" class="logo-container" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
             <img src="images/logo.png" alt="Demha Logo" class="brand-logo" onerror="this.style.display='none'">
-            <span class="logo-text">Demha<span>.ai</span></span>
+            <span class="logo-text" style="color: #000 !important; font-weight: 800; font-size: 22px;">Demha</span>
         </a>
     </header>
 
@@ -33,13 +37,10 @@
 
             <!-- Low Rating Section (Shown for 1-3 stars) -->
             <div id="feedbackFormContainer" class="hidden">
-                
-                <!-- 1. Top instruction text -->
                 <p class="instruction-lead">
                     Please share what went wrong in the private feedback box below so our management can investigate and make it right immediately.
                 </p>
 
-                <!-- 2. Feedback Box (Inputs & Submit Button) -->
                 <div class="form-group" style="text-align: left;">
                     <label>Your Name</label>
                     <input type="text" id="feedbackCustomerName" placeholder="Enter your full name">
@@ -52,14 +53,13 @@
                 
                 <button onclick="submitPrivateFeedback()" class="btn-primary">Send Private Feedback</button>
 
-                <!-- 3. Apology text of minimum 5 lines -->
                 <div class="apology-text-block">
                     <p>We want to sincerely apologize that your experience with our team did not meet your expectations. We hold ourselves to the highest standards of service, quality, and customer care, and it is disappointing to learn that we fell short in your case. Your satisfaction and trust mean everything to our organization, and we take full accountability for this oversight. Please rest assured that our senior management reviews every single report personally to implement immediate corrective actions and ensure this never happens again. Thank you for giving us the opportunity to review your comments so we can continuously improve.</p>
                 </div>
 
-                <!-- 4. Subtle Google fallback link tucked underneath -->
-                <div class="google-fallback-section">
-                    <a id="googleProfileFallbackLink" href="#" target="_blank" class="fallback-link">
+                <div class="google-fallback-section" style="margin-top: 25px; text-align: center;">
+                    <p style="font-size: 14px; color: #555; margin-bottom: 8px;">or prefer leave a review on google :</p>
+                    <a id="googleProfileFallbackLink" href="#" target="_blank" class="fallback-link" style="text-decoration: underline; color: #1a1a1a; font-weight: 500;">
                         Google Review Page
                     </a>
                 </div>
@@ -76,8 +76,34 @@
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 Demha.ai. All rights reserved. Secure Reputation Protection.
+    <!-- Uniform Footer -->
+    <footer style="background: #121212 !important; color: #aaa !important; padding: 45px 20px 25px 20px; font-family: sans-serif; border-top: 2px solid #d4af37; margin: 0;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px;">
+            <div style="text-align: left;">
+                <a href="index.html" onclick="window.scrollTo(0,0);" style="text-decoration: none; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; display: inline-block;">
+                    <span style="color: #d4af37;">Demha</span>
+                </a>
+                <p style="margin: 8px 0 0 0; font-size: 13px; color: #888; max-width: 350px; line-height: 1.5;">Next-generation reputation protection and automated customer feedback management for local service businesses.</p>
+            </div>
+            
+            <div style="text-align: right; font-size: 14px; line-height: 1.8;">
+                <p style="margin: 0; color: #fff; font-weight: 600;">
+                    Founder: <span style="color: #d4af37; font-weight: 700;">Ahmad Hassan Nazeer</span>
+                </p>
+                <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
+                    <a href="https://wa.me/923206603904" target="_blank" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
+                        <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> +92 320 660 3904
+                    </a>
+                    <a href="mailto:ahmadhassannazeer111@gamil.com" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
+                        <i class="fa-regular fa-envelope" style="color: #d4af37;"></i> ahmadhassannazeer111@gamil.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="max-width: 1100px; margin: 35px auto 0 auto; padding-top: 20px; border-top: 1px solid #222; text-align: center; font-size: 12px; color: #666;">
+            &copy; 2026 Demha. All rights reserved. Built with precision for global service providers.
+        </div>
     </footer>
 
     <script src="js/review.js"></script>
