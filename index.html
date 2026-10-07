@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demha.ai - Automated Reputation & Review Management</title>
+    <title>Demha - Automated Reputation & Review Management</title>
     <!-- Linking Separate CSS File -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { margin: 0; padding: 0; overflow-x: hidden; }
+    </style>
 </head>
 <body>
 
     <!-- Header / Navbar -->
     <header>
-        <!-- Clicking the logo reloads the website -->
-        <a href="index.html" class="logo-container" style="text-decoration: none;">
+        <a href="index.html" class="logo-container" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
             <img src="images/logo.png" alt="Demha Logo" class="brand-logo" onerror="this.style.display='none'">
-            <span class="logo-text">Demha<span>.ai</span></span>
+            <span class="logo-text" style="color: #000 !important; font-weight: 800; font-size: 22px;">Demha</span>
         </a>
         
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div class="nav-highlight">
+            <div class="nav-highlight" onclick="document.getElementById('requestSection').scrollIntoView({behavior: 'smooth'});" style="cursor: pointer;">
                 <i class="fa-solid fa-gift"></i> <span>Get Your First Month Free</span>
             </div>
             <a href="#requestSection" class="login-btn" style="background: linear-gradient(135deg, #d4af37 0%, #b89123 100%); color: #fff; border: none; text-decoration: none;">Get Started Free</a>
@@ -124,18 +126,18 @@
         </div>
 
         <div class="faq-item">
-    <button class="faq-question">
-        <span>How can I make an account on Demha and what are the prices?</span>
-        <i class="fa-solid fa-chevron-down"></i>
-    </button>
-    <div class="faq-answer">
-        You can create your account instantly using the form below! <strong>Your first month is completely free!</strong> Moving forward, it is only $49/month.
-    </div>
-</div>
+            <button class="faq-question">
+                <span>How can I make an account on Demha and what are the prices?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                You can create your account instantly using the form below! <strong>Your first month is completely free!</strong> Moving forward, it is only $49/month.
+            </div>
+        </div>
     </section>
 
     <!-- Instant Account Creation Section -->
-    <section id="requestSection" style="max-width: 900px; margin: 0 auto 90px auto; padding: 0 20px; scroll-margin-top: 110px;">
+    <section id="requestSection" style="max-width: 900px; margin: 0 auto 60px auto; padding: 0 20px; scroll-margin-top: 110px;">
         <div class="feature-card" style="background: linear-gradient(135deg, #fffdf9 0%, #fdf8eb 100%); border-color: var(--gold-primary); padding: 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
                 <h2 style="font-size: 28px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Create Your Free Account</h2>
@@ -179,9 +181,34 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2026 Demha.ai. All rights reserved. Built exclusively for local service providers.
+    <!-- Uniform Footer -->
+    <footer style="background: #121212 !important; color: #aaa !important; padding: 45px 20px 25px 20px; font-family: sans-serif; border-top: 2px solid #d4af37; margin: 0;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px;">
+            <div style="text-align: left;">
+                <a href="index.html" onclick="window.scrollTo(0,0);" style="text-decoration: none; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; display: inline-block;">
+                    <span style="color: #d4af37;">Demha</span>
+                </a>
+                <p style="margin: 8px 0 0 0; font-size: 13px; color: #888; max-width: 350px; line-height: 1.5;">Next-generation reputation protection and automated customer feedback management for local service businesses.</p>
+            </div>
+            
+            <div style="text-align: right; font-size: 14px; line-height: 1.8;">
+                <p style="margin: 0; color: #fff; font-weight: 600;">
+                    Founder: <span style="color: #d4af37; font-weight: 700;">Ahmad Hassan Nazeer</span>
+                </p>
+                <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
+                    <a href="https://wa.me/923206603904" target="_blank" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
+                        <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> +92 320 660 3904
+                    </a>
+                    <a href="mailto:ahmadhassannazeer111@gamil.com" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
+                        <i class="fa-regular fa-envelope" style="color: #d4af37;"></i> ahmadhassannazeer111@gamil.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="max-width: 1100px; margin: 35px auto 0 auto; padding-top: 20px; border-top: 1px solid #222; text-align: center; font-size: 12px; color: #666;">
+            &copy; 2026 Demha. All rights reserved. Built with precision for global service providers.
+        </div>
     </footer>
 
     <script src="js/index.js"></script>
