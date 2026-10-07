@@ -45,7 +45,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     currentUserEmail = session.user.email;
     currentUserId = session.user.id;
+    
     document.getElementById('userEmailDisplay').textContent = currentUserEmail;
+    const topEmailElem = document.getElementById('userEmailTop');
+    if(topEmailElem) topEmailElem.textContent = currentUserEmail;
 
     let { data, error } = await supabaseClient
         .from('businesses')
@@ -67,6 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('googleLink').value = data.google_link || '';
     }
 
+    // Fetching feedback and rendering professional cards with Name, Email, Rating & Message
     const { data: feedbackData, error: feedbackError } = await supabaseClient
         .from('feedback')
         .select('*')
@@ -77,22 +81,40 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (feedbackData && feedbackData.length > 0) {
         feedbackContainer.innerHTML = '';
         feedbackData.forEach(item => {
+            const customerName = item.customer_name || 'Anonymous Customer';
+            const customerEmail = item.customer_email || item.email || 'No email provided';
+            const initial = customerName.charAt(0).toUpperCase();
+            const rating = item.rating || 1;
+            const feedbackText = item.feedback_text || item.feedback || 'No comment provided.';
+            const dateStr = item.created_at ? new Date(item.created_at).toLocaleString() : 'Recent';
+
             const box = document.createElement('div');
-            box.className = 'feedback-item';
+            box.className = 'feedback-card-item';
             box.innerHTML = `
-                <div class="feedback-header">
-                    <span class="customer-name">👤 ${item.customer_name || 'Customer'}</span>
-                    <span class="stars">⭐ ${item.rating} / 5</span>
+                <div class="feedback-card-top">
+                    <div class="feedback-user-info">
+                        <div class="feedback-avatar">${initial}</div>
+                        <div>
+                            <h4 class="feedback-name">${customerName}</h4>
+                            <div class="feedback-email-display">
+                                <i class="fa-regular fa-envelope"></i>
+                                <span>${customerEmail}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feedback-meta">
+                        <span class="feedback-badge-star">⭐ ${rating} / 5</span>
+                        <span class="feedback-date"><i class="fa-regular fa-clock"></i> ${dateStr}</span>
+                    </div>
                 </div>
-                <p class="feedback-body">"${item.feedback_text}"</p>
-                <div class="feedback-footer">
-                    <span class="date">${new Date(item.created_at).toLocaleString()}</span>
+                <div class="feedback-message-box">
+                    "${feedbackText}"
                 </div>
             `;
             feedbackContainer.appendChild(box);
         });
     } else {
-        feedbackContainer.innerHTML = '<p class="empty-text">No negative feedback received yet. Great job!</p>';
+        feedbackContainer.innerHTML = '<p class="empty-text" style="text-align: center; color: var(--text-muted); padding: 20px;">No feedback received yet. Great job!</p>';
     }
 });
 
@@ -148,7 +170,7 @@ async function sendReviewRequest() {
         return;
     }
 
-    const reviewLink = `${window.location.origin}/review.html?email=${encodeURIComponent(currentUserEmail)}`;
+    const reviewLink = `${window.location.origin}/review.html?email=${encodeURIComponent(currentUserEmail)}&name=${encodeURIComponent(customerName)}&customer_email=${encodeURIComponent(customerEmail)}`;
 
     const formData = new URLSearchParams();
     formData.append('customer_name', customerName);
