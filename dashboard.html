@@ -5,26 +5,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Demha</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <style>
-        body { margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        .container { flex: 1; }
-        #feedbackList, #feedbackList * {
-            word-break: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-main: #ffffff;
+            --box-bg: #fffdf9;
+            --gold-primary: #d4af37;
+            --gold-dark: #b89123;
+            --text-main: #1f1d1a;
+            --text-muted: #6b645c;
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --shadow-luxury: 0 20px 50px rgba(212, 175, 55, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        .global-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 36px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-gold);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .logo-container {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-text {
+            color: #1a1a1a !important;
+            font-weight: 800 !important;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 840px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .dashboard-title-area {
+            margin-bottom: 30px;
+        }
+
+        .dashboard-title-area h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            background: linear-gradient(135deg, #d4af37 0%, #996515 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .user-email-display {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .card {
+            background: var(--box-bg);
+            border: 1.5px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-luxury);
+        }
+
+        .card h3 {
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 16px;
+            background: #ffffff;
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--text-main);
+            box-sizing: border-box;
+        }
+
+        .readonly-input {
+            background: #f7f4ee !important;
+            color: var(--text-muted) !important;
+        }
+
+        .btn-primary {
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #e6ca65 0%, #d4af37 50%, #b89123 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-request {
+            background: #fdfae7;
+            color: var(--gold-dark);
+            border: 1px solid var(--border-gold);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .btn-request:hover {
+            background: var(--gold-primary);
+            color: #ffffff;
+            border-color: var(--gold-primary);
+        }
+
+        .btn-logout {
+            background: rgba(239, 68, 68, 0.05);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: #dc2626;
+            color: #ffffff;
+        }
+
+        .feedback-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge-notice {
+            background: #fdfae7;
+            color: var(--gold-dark);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-gold);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--box-bg);
+            width: 100%;
+            max-width: 420px;
+            padding: 32px;
+            border-radius: 22px;
+            border: 1.5px solid var(--border-gold);
+            box-shadow: var(--shadow-luxury);
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <header class="global-header" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
-            <img src="images/logo.png" alt="Demha Logo" class="brand-logo">
-            <span style="color: #000 !important; font-weight: 800; font-size: 22px; font-family: sans-serif;">Demha</span>
+   <header class="global-header">
+        <a href="index.html" class="logo-container">
+            <img src="images/logo.png" alt="Demha Logo" class="brand-logo" onerror="this.style.display='none'">
+            <span class="logo-text">Demha</span>
         </a>
-        <div class="header-actions">
-            <button onclick="openRequestModal()" class="btn-request">Request Change</button>
+        <div class="header-right">
             <button onclick="logout()" class="btn-logout">Logout</button>
         </div>
     </header>
@@ -46,6 +276,7 @@
                 <label>Google Profile Review Link</label>
                 <input type="url" id="googleLink" readonly class="readonly-input" placeholder="Loading...">
             </div>
+            <button onclick="openRequestModal()" class="btn-request">Request Setting Changes</button>
         </div>
 
         <div class="card">
@@ -62,15 +293,16 @@
             <button onclick="sendReviewRequest()" class="btn-primary">Send Review Request</button>
         </div>
 
+        <!-- Professional Feedback Inbox Section -->
         <div class="card">
             <div class="feedback-card-header">
                 <div>
                     <h3>Customer Feedback Inbox</h3>
-                    <p class="subtitle" style="margin-bottom:0;">Private feedback submitted by clients</p>
+                    <p class="subtitle" style="margin-bottom:0;">Private feedback submitted by clients with contact info</p>
                 </div>
                 <span class="badge-notice">Auto-deletes after 1 week</span>
             </div>
-            <div id="feedbackList" style="margin-top: 16px;">
+            <div id="feedbackList" style="display: flex; flex-direction: column; gap: 15px; margin-top: 16px;">
                 <p style="color: var(--text-muted); text-align: center; padding: 20px;">Loading feedback...</p>
             </div>
         </div>
@@ -96,8 +328,7 @@
         </div>
     </div>
 
-    <!-- Uniform Footer -->
-    <footer style="background: #121212 !important; color: #aaa !important; padding: 45px 20px 25px 20px; font-family: sans-serif; border-top: 2px solid #d4af37; margin: 0;">
+    <footer style="background: #121212; color: #aaa; padding: 45px 20px 25px 20px; font-family: sans-serif; border-top: 2px solid #d4af37; margin-top: 60px;">
         <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px;">
             <div style="text-align: left;">
                 <a href="index.html" onclick="window.scrollTo(0,0);" style="text-decoration: none; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; display: inline-block;">
@@ -105,26 +336,24 @@
                 </a>
                 <p style="margin: 8px 0 0 0; font-size: 13px; color: #888; max-width: 350px; line-height: 1.5;">Next-generation reputation protection and automated customer feedback management for local service businesses.</p>
             </div>
-            
             <div style="text-align: right; font-size: 14px; line-height: 1.8;">
                 <p style="margin: 0; color: #fff; font-weight: 600;">
                     Founder: <span style="color: #d4af37; font-weight: 700;">Ahmad Hassan Nazeer</span>
                 </p>
-                <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
-                    <a href="https://wa.me/923206603904" target="_blank" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
-                        <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> +92 320 660 3904
+                <p style="margin: 4px 0;">
+                    <a href="https://wa.me/923206603904" target="_blank" style="color: #ccc; text-decoration: none; margin-right: 18px;">
+                        <i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 6px;"></i> +92 320 660 3904
                     </a>
-                    <a href="mailto:ahmadhassannazeer111@gamil.com" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
-                        <i class="fa-regular fa-envelope" style="color: #d4af37;"></i> ahmadhassannazeer111@gamil.com
+                    <a href="mailto:ahmadhassannazeer111@gamil.com" style="color: #ccc; text-decoration: none;">
+                        <i class="fa-regular fa-envelope" style="color: #d4af37; margin-right: 6px;"></i> ahmadhassannazeer111@gamil.com
                     </a>
-                </div>
+                </p>
             </div>
         </div>
-        
         <div style="max-width: 1100px; margin: 35px auto 0 auto; padding-top: 20px; border-top: 1px solid #222; text-align: center; font-size: 12px; color: #666;">
             &copy; 2026 Demha. All rights reserved. Built with precision for global service providers.
         </div>
-    </footer>
+    </footer> 
 
     <script src="js/dashboard.js"></script>
 </body>
