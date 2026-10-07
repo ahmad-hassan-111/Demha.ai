@@ -4,6 +4,8 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentSelectedRating = 0;
 let businessGoogleLink = '';
+let customerNameFromUrl = '';
+let customerEmailFromUrl = '';
 
 // Universal Golden & White Modal Injector & Trigger
 let modalCallback = null;
@@ -39,6 +41,8 @@ window.closeCustomModal = function() {
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const businessEmail = urlParams.get('email');
+    customerNameFromUrl = urlParams.get('name') || '';
+    customerEmailFromUrl = urlParams.get('customer_email') || '';
 
     if (!businessEmail) {
         document.getElementById('businessTitle').textContent = "Invalid Review Link";
@@ -90,13 +94,8 @@ async function handleRating(stars) {
 }
 
 async function submitPrivateFeedback() {
-    const customerName = document.getElementById('feedbackCustomerName').value.trim();
     const feedbackText = document.getElementById('privateFeedback').value.trim();
     
-    if (!customerName) {
-        showCustomAlert('Please enter your name.', 'Validation Error');
-        return;
-    }
     if (!feedbackText) {
         showCustomAlert('Please type a quick note before submitting.', 'Validation Error');
         return;
@@ -111,7 +110,8 @@ async function submitPrivateFeedback() {
             business_email: businessEmail,
             rating: currentSelectedRating,
             feedback_text: feedbackText,
-            customer_name: customerName
+            customer_name: customerNameFromUrl || 'Anonymous Customer',
+            customer_email: customerEmailFromUrl || 'No email provided'
         });
 
     if (error) {
