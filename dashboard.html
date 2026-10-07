@@ -6,10 +6,23 @@
     <title>Dashboard | Demha</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .container { flex: 1; }
+        #feedbackList, #feedbackList * {
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <header class="global-header">
-        <img src="images/logo.png" alt="Demha Logo" class="brand-logo">
+    <header class="global-header" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+            <img src="images/logo.png" alt="Demha Logo" class="brand-logo">
+            <span style="color: #000 !important; font-weight: 800; font-size: 22px; font-family: sans-serif;">Demha</span>
+        </a>
         <div class="header-actions">
             <button onclick="openRequestModal()" class="btn-request">Request Change</button>
             <button onclick="logout()" class="btn-logout">Logout</button>
@@ -82,6 +95,36 @@
             </div>
         </div>
     </div>
+
+    <!-- Uniform Footer -->
+    <footer style="background: #121212 !important; color: #aaa !important; padding: 45px 20px 25px 20px; font-family: sans-serif; border-top: 2px solid #d4af37; margin: 0;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px;">
+            <div style="text-align: left;">
+                <a href="index.html" onclick="window.scrollTo(0,0);" style="text-decoration: none; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; display: inline-block;">
+                    <span style="color: #d4af37;">Demha</span>
+                </a>
+                <p style="margin: 8px 0 0 0; font-size: 13px; color: #888; max-width: 350px; line-height: 1.5;">Next-generation reputation protection and automated customer feedback management for local service businesses.</p>
+            </div>
+            
+            <div style="text-align: right; font-size: 14px; line-height: 1.8;">
+                <p style="margin: 0; color: #fff; font-weight: 600;">
+                    Founder: <span style="color: #d4af37; font-weight: 700;">Ahmad Hassan Nazeer</span>
+                </p>
+                <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
+                    <a href="https://wa.me/923206603904" target="_blank" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
+                        <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> +92 320 660 3904
+                    </a>
+                    <a href="mailto:ahmadhassannazeer111@gamil.com" style="color: #ccc; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#ccc'">
+                        <i class="fa-regular fa-envelope" style="color: #d4af37;"></i> ahmadhassannazeer111@gamil.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="max-width: 1100px; margin: 35px auto 0 auto; padding-top: 20px; border-top: 1px solid #222; text-align: center; font-size: 12px; color: #666;">
+            &copy; 2026 Demha. All rights reserved. Built with precision for global service providers.
+        </div>
+    </footer>
 
     <script src="js/dashboard.js"></script>
 </body>
