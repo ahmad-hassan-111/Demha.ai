@@ -1,4 +1,4 @@
-/* Professional Feedback Card Styling with Text Break/Wrap Fix */
+/* Professional Feedback Card Styling with Stacked Name & Email */
 .feedback-card-item {
     background: #fff;
     border: 1px solid var(--border-gold);
@@ -8,44 +8,54 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: all 0.2s ease;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
 }
 
-.feedback-card-item:hover {
-    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.12);
-    border-color: var(--gold-primary);
-}
-
 .feedback-card-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
+    width: 100%;
 }
 
 .feedback-user-info {
     display: flex;
     align-items: center;
     gap: 14px;
+    flex: 1;
+    min-width: 0;
+}
+
+.feedback-user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
 }
 
 .feedback-avatar {
-    width: 44px;
-    height: 44px;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
     background: #0f291e;
     color: var(--gold-primary);
-    border-radius: 50%;
+    border-radius: 50% !important;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 18px;
     border: 1.5px solid var(--gold-primary);
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
 }
 
 .feedback-name {
@@ -53,6 +63,7 @@
     font-size: 16px;
     font-weight: 700;
     color: var(--text-main);
+    word-break: break-word;
 }
 
 .feedback-email-display {
@@ -61,17 +72,26 @@
     gap: 6px;
     font-size: 13px;
     color: var(--text-muted);
-    margin-top: 3px;
+    width: 100%;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .feedback-email-display i {
     color: var(--gold-primary);
+    flex-shrink: 0;
+}
+
+.feedback-email-display span {
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .feedback-meta {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .feedback-badge-star {
@@ -82,6 +102,7 @@
     border-radius: 20px;
     font-size: 13px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .feedback-date {
@@ -89,7 +110,6 @@
     color: var(--text-muted);
 }
 
-/* Crucial Fix: Prevents long text from overflowing outside the box */
 .feedback-message-box {
     background: #f9fafb;
     border-left: 3px solid var(--gold-primary);
@@ -104,5 +124,4 @@
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: pre-wrap;
-    max-width: 100%;
 }
