@@ -5,7 +5,6 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentUserEmail = '';
 let currentUserId = '';
 
-// Universal Golden & White Modal Injector & Trigger
 let modalCallback = null;
 function showCustomAlert(message, title = 'Demha.ai', callback = null) {
     let modal = document.getElementById('customModal');
@@ -47,8 +46,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     currentUserId = session.user.id;
     
     document.getElementById('userEmailDisplay').textContent = currentUserEmail;
-    const topEmailElem = document.getElementById('userEmailTop');
-    if(topEmailElem) topEmailElem.textContent = currentUserEmail;
 
     let { data, error } = await supabaseClient
         .from('businesses')
@@ -70,7 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('googleLink').value = data.google_link || '';
     }
 
-    // Fetching feedback and rendering professional cards with Name, Email, Rating & Message
     const { data: feedbackData, error: feedbackError } = await supabaseClient
         .from('feedback')
         .select('*')
@@ -88,17 +84,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             const feedbackText = item.feedback_text || item.feedback || 'No comment provided.';
             const dateStr = item.created_at ? new Date(item.created_at).toLocaleString() : 'Recent';
 
+            // Check if email is valid and create clickable interaction matching Request Change logic
+            const isEmailValid = customerEmail.includes('@') && customerEmail !== 'No email provided';
+            const emailHtml = isEmailValid 
+                ? `<span onclick="openCustomerEmail('${customerEmail}', '${customerName}')" style="color: inherit; cursor: pointer; text-decoration: underline;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='inherit'">${customerEmail}</span>`
+                : `<span>${customerEmail}</span>`;
+
             const box = document.createElement('div');
             box.className = 'feedback-card-item';
             box.innerHTML = `
                 <div class="feedback-card-top">
                     <div class="feedback-user-info">
                         <div class="feedback-avatar">${initial}</div>
-                        <div>
+                        <div class="feedback-user-details">
                             <h4 class="feedback-name">${customerName}</h4>
                             <div class="feedback-email-display">
-                                <i class="fa-regular fa-envelope"></i>
-                                <span>${customerEmail}</span>
+                                <i class="fa-regular fa-envelope" style="color: var(--gold-primary);"></i>
+                                ${emailHtml}
                             </div>
                         </div>
                     </div>
@@ -117,6 +119,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         feedbackContainer.innerHTML = '<p class="empty-text" style="text-align: center; color: var(--text-muted); padding: 20px;">No feedback received yet. Great job!</p>';
     }
 });
+
+// Smart Email Opener for Mobile vs PC (Matching Request Change Logic)
+function openCustomerEmail(customerEmail, customerName) {
+    const subject = `Regarding your recent feedback - Demha`;
+    const body = `Hello ${customerName},\n\nThank you for sharing your feedback with us. We would like to follow up regarding your experience.\n\nBest regards,\nDemha Team`;
+
+    const mailtoLink = `mailto:${customerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailWebLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(customerEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        window.location.href = mailtoLink;
+    } else {
+        window.open(gmailWebLink, '_blank');
+    }
+}
 
 function openRequestModal() {
     document.getElementById('newBusinessName').value = document.getElementById('businessName').value;
