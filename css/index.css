@@ -29,28 +29,58 @@ body {
     color: #2c2c2c;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* Section & Card Fade-ins */
-header, .hero, .features, .blog-preview-section, .faq-section, #requestSection {
+header, .hero, .features, .blog-preview-section, .faq-section, #requestSection, .platform-highlights {
     animation: fadeIn 1s ease-out forwards;
 }
 
-/* Feature Cards & FAQs Interactive Hover Effects */
-.feature-card, .faq-item {
+/* Feature Cards, FAQ Items & Highlight Cards Interactive Hover Effects */
+.feature-card, .faq-item, .highlight-card {
     transition: all 0.3s ease;
 }
 
-.feature-card:hover {
+.feature-card:hover, .highlight-card:hover {
     transform: translateY(-6px);
     border-color: var(--gold-primary) !important;
-    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.2) !important;
 }
 
 .faq-item:hover {
     transform: translateY(-3px);
     border-color: var(--gold-primary) !important;
     box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Highlight Card Base Styles */
+.highlight-card {
+    background: #ffffff;
+    border: 1.5px solid rgba(212, 175, 55, 0.35);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.08);
+}
+
+.highlight-icon {
+    color: #d4af37;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.highlight-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f1d1a;
+    margin: 0 0 6px 0;
+}
+
+.highlight-card p {
+    font-size: 13px;
+    color: #6b645c;
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* Colors & Variables */
@@ -77,13 +107,13 @@ header {
 }
 
 .logo-container {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 }
 
-/* Logo Size Controlled */
 .brand-logo {
     height: 65px;
     width: auto;
@@ -92,14 +122,15 @@ header {
 .logo-text {
     font-size: 22px;
     font-weight: 800;
-    color: var(--text-main);
+    color: #000 !important;
 }
 
-.logo-text span {
-    color: var(--gold-primary);
+.header-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* "Get Your First Month Free" Badge Styling & Hover Up/Down Effect */
 .nav-highlight {
     display: flex;
     align-items: center;
@@ -112,7 +143,7 @@ header {
     font-weight: 700;
     border: 1.5px solid var(--border-gold);
     transition: all 0.3s ease;
-    cursor: default;
+    cursor: pointer;
 }
 
 .nav-highlight:hover {
@@ -136,6 +167,12 @@ header {
     background: var(--gold-primary);
     color: #fff;
     transform: translateY(-2px);
+}
+
+.get-started-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #b89123 100%);
+    color: #fff;
+    border: none;
 }
 
 /* Hero Section */
@@ -177,13 +214,45 @@ header {
     line-height: 1.6;
 }
 
-/* Features Section */
-.features {
+/* Platform Highlights Section */
+.platform-highlights {
+    padding: 60px 20px 40px 20px;
+    background: transparent;
+}
+
+.highlights-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.highlights-container h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1f1d1a;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #d4af37 0%, #996515 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.highlights-subtitle {
+    font-size: 15px;
+    color: #6b645c;
+    margin-bottom: 40px;
+}
+
+.highlights-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto 50px auto;
+    gap: 20px;
+    text-align: left;
+}
+
+/* Blog Preview Section */
+.blog-preview-section {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
     padding: 0 20px;
 }
 
@@ -195,23 +264,58 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-.feature-card i {
-    font-size: 28px;
-    color: var(--gold-primary);
-    margin-bottom: 15px;
+.blog-card-bg {
+    background: linear-gradient(135deg, #fffdf9 0%, #f7f2e6 100%) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+}
+
+.blog-meta-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.blog-tag {
+    background: var(--gold-primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.blog-read-time {
+    font-size: 13px;
+    color: var(--text-muted);
 }
 
 .feature-card h3 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 22px;
     margin-bottom: 10px;
     color: var(--text-main);
+    font-weight: 700;
 }
 
 .feature-card p {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-muted);
-    line-height: 1.5;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.workflow-desc {
+    line-height: 1.6;
+}
+
+.blog-footer-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* FAQ Section */
@@ -252,6 +356,15 @@ header {
     align-items: center;
 }
 
+/* Smooth Arrow Rotation for FAQs */
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
 .faq-answer {
     padding: 0 20px 18px 20px;
     color: var(--text-muted);
@@ -264,20 +377,204 @@ header {
     display: block;
 }
 
+/* Account Request Section */
+.account-request-section {
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+    scroll-margin-top: 110px;
+}
+
+.request-card-box {
+    background: linear-gradient(135deg, #fffdf9 0%, #fdf8eb 100%) !important;
+    border-color: var(--gold-primary) !important;
+    padding: 40px !important;
+}
+
+.request-header-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.request-header-area h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 8px 0;
+}
+
+.request-header-area p {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-field-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-field-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border-gold);
+    background: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.password-wrapper span {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+}
+
+.create-account-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    background: linear-gradient(135deg, #d4af37 0%, #b89123 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
 /* Forced Golden Footer Styles */
 footer {
     background: linear-gradient(135deg, #fffdf9 0%, #f7f2e6 100%) !important;
-    color: var(--gold-dark) !important;
-    text-align: center !important;
-    padding: 40px 20px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    border-top: 1.5px solid var(--border-gold) !important;
-    margin-top: 60px !important;
+    background: #121212 !important;
+    color: #aaa !important;
+    padding: 45px 20px 25px 20px !important;
+    font-family: sans-serif !important;
+    border-top: 2px solid #d4af37 !important;
+    margin: 0 !important;
     display: block !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-logo-link {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.footer-logo-text {
+    color: #d4af37;
+}
+
+.footer-desc {
+    margin: 8px 0 0 0;
+    font-size: 13px;
+    color: #888;
+    max-width: 350px;
+    line-height: 1.5;
+}
+
+.footer-right {
+    text-align: right;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.founder-info {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+}
+
+.founder-name {
+    color: #d4af37;
+    font-weight: 700;
+}
+
+.footer-links-col {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+}
+
+.footer-contact-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-contact-link:hover {
+    color: #d4af37;
+}
+
+.whatsapp-icon {
+    color: #25D366;
+}
+
+.email-icon {
+    color: #d4af37;
+}
+
+.footer-bottom {
+    max-width: 1100px;
+    margin: 35px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
 /* Mobile Responsive Fixes for Header Overlap */
 @media screen and (max-width: 768px) {
     header {
@@ -287,7 +584,7 @@ footer {
         text-align: center;
     }
 
-    header > div:nth-child(2) {
+    .header-nav-right {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px !important;
