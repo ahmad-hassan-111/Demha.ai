@@ -69,7 +69,324 @@
                 <i class="fa-solid fa-shield-halved"></i> Automated reputation building made seamless for modern providers.
             </div>
         </div>
+    </section><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demha - Automated Reputation & Review Management</title>
+    <!-- Linking Separate CSS File -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="images/logo.png" alt="Demha Logo" class="brand-logo" onerror="this.style.display='none'">
+            <span class="logo-text">Demha</span>
+        </a>
+        
+        <div class="header-nav-right">
+            <div class="nav-highlight" onclick="document.getElementById('requestSection').scrollIntoView({behavior: 'smooth'});">
+                <i class="fa-solid fa-gift"></i> <span>Get Your First Month Free</span>
+            </div>
+            <a href="#requestSection" class="login-btn get-started-btn">Get Started Free</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Exclusive for Local Service Businesses</div>
+        <h1>Protect Your Reputation. <span>Automate High-Rating Reviews.</span></h1>
+        <p>Demha intercepts negative feedback privately before it hurts your Google rating, while automatically driving your happiest clients to your public profile.</p>
+    </section> 
+
+    <!-- Demha Platform Highlights Section -->
+    <section class="platform-highlights">
+        <div class="highlights-container">
+            <h2>Why Choose Demha?</h2>
+            <p class="highlights-subtitle">The smartest way to protect your reputation and grow your local business reviews.</p>
+            
+            <div class="highlights-grid">
+                
+                <!-- Point 1 -->
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <h4>Easy Dashboard Access</h4>
+                    <p>Anyone can create an account and access their own secure dashboard.</p>
+                </div>
+                
+                <!-- Point 2 -->
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h4>Save Time</h4>
+                    <p>Save time by managing review-related work in one convenient place.</p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <h4>Catch Negative Feedback Early</h4>
+                    <p>Catch negative feedback early so businesses can respond before problems damage their reputation.</p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fa-solid fa-filter-circle-xmark"></i></div>
+                    <h4>Zero Slip-Throughs</h4>
+                    <p>Manage customer feedback and reviews without letting reviews slip through the cracks.</p>
+                </div>
+
+                <!-- Point 5 -->
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fa-solid fa-award"></i></div>
+                    <h4>Build Stronger Trust</h4>
+                    <p>Protect their online reputation and build stronger customer trust effortlessly.</p>
+                </div>
+
+            </div>
+        </div>
     </section>
+
+    <!-- Blog / Insights Preview Section -->
+    <section class="blog-preview-section">
+        <div class="feature-card blog-card-bg">
+            <div class="blog-meta-area">
+                <span class="blog-tag">Demha Insights</span>
+                <span class="blog-read-time">2 min read</span>
+            </div>
+            <h3>Why Local Service Businesses Lose 70% of Potential Google Reviews</h3>
+            <p>Most clients are happy after a service, but they simply forget to leave a review because asking manually is awkward and inconsistent. Demha automates the exact sequence right after appointment completion to capture high ratings effortlessly.</p>
+            <div class="blog-footer-text">
+                <i class="fa-solid fa-shield-halved"></i> Automated reputation building made seamless for modern providers.
+            </div>
+        </div>
+    </section>
+
+    <!-- How Demha Works Blog Box -->
+    <section class="blog-preview-section">
+        <div class="feature-card blog-card-bg">
+            <div class="blog-meta-area">
+                <span class="blog-tag">Demha Workflow</span>
+                <span class="blog-read-time">3 min read</span>
+            </div>
+            <h3>How Demha Works: Simple Dashboard Control for Local Businesses</h3>
+            <p class="workflow-desc">
+                Demha makes managing your online reputation simple, fast, and completely stress-free. After finishing a service appointment, simply log into your Demha dashboard and enter your customer's name and email address into the quick-send box. The system instantly dispatches a professional feedback request email to your client while their experience is still fresh. When they open the secure link, they select a star rating from 1 to 5. Delighted clients who leave 4 or 5 stars are instantly redirected to your public Google Business profile to boost your reviews. Meanwhile, any unhappy clients leaving 1 to 3 stars are intercepted privately and routed to an internal feedback form, alerting your management team right away to resolve the issue before it hits Google.
+            </p>
+            <div class="blog-footer-text">
+                <i class="fa-solid fa-bolt"></i> Enter customer details in your dashboard and let Demha handle the rest.
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (12 Complete FAQs) -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>What types of businesses is Demha built for?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                It is designed exclusively for local service providers (such as dental clinics, contractors, HVAC, salons, and spas) where appointment bookings automatically capture client contact information.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Do I need any technical skills to set this up?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Not at all! Our system sets up your database and review dashboard instantly upon registration.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How does Demha stop negative reviews from hitting Google?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                When a customer clicks 1, 2, or 3 stars on our feedback screen, they are instantly directed to a private feedback form instead of Google. This alerts your team internally so you can resolve the complaint directly.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How quickly do review requests reach my clients?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Through our automated webhooks, review requests land in your client's inbox within seconds after you submit their details from your dashboard.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Can I use Demha for multiple locations or staff members?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Yes! The system can be configured to track reviews and feedback across different service providers or business branches seamlessly from your dashboard.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How can I make an account on Demha and what are the prices?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                You can create your account instantly using the form below! <strong>Your first month is completely free!</strong> Moving forward, it is only $49/month.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How do my customers receive the review request?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                When you enter customer details on your dashboard, Demha sends a clean, professional email directly to their inbox with a one-click review link.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>What happens after the 1-month free trial ends?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                You will be billed $49/month. There are no hidden setup fees, long-term contracts, or cancellation penalties—you can cancel anytime when you want.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Will my customers need to log in or download an app to leave feedback?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                No, not at all! Customers just click the link in their email and tap a star rating. It takes less than 10 seconds with zero friction.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How do I track private feedback submitted by unhappy clients?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                All 1-to-3 star ratings and private customer comments appear instantly inside your Demha Dashboard’s "Customer Feedback Inbox" so you can take action immediately.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Is there any limit on how many review requests I can send per month?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                No limits! You can send unlimited review requests to all your clients every month under the $49/month plan.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Can I update my Business Name or Google Review link later?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Yes, you can submit a change request directly from your dashboard anytime, and our team will update your active configuration for you.
+            </div>
+        </div>
+    </section>
+
+    <!-- Instant Account Creation Section -->
+    <section id="requestSection" class="account-request-section">
+        <div class="feature-card request-card-box">
+            <div class="request-header-area">
+                <h2>Create Your Free Account</h2>
+                <p>Fill out your details below to get instant access. Your first month is completely free, then just $49/month.</p>
+            </div>
+
+            <form onsubmit="submitAccountRequest(event)" class="account-form">
+                <div class="form-field-group">
+                    <label>Owner Name</label>
+                    <input type="text" id="reqName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-field-group">
+                    <label>Business Email</label>
+                    <input type="email" id="reqEmail" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-field-group">
+                    <label>Business Name</label>
+                    <input type="text" id="reqBusiness" placeholder="Enter your business name" required>
+                </div>
+
+                <div class="form-field-group">
+                    <label>Google Profile Link</label>
+                    <input type="url" id="reqProfile" placeholder="https://maps.app.goo.gl/..." required>
+                </div>
+
+                <div class="form-field-group">
+                    <label>Create Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="reqPassword" placeholder="At least 6 characters" required>
+                        <span id="eyeIcon" onclick="togglePasswordVisibility()">👁️‍🗨️</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary create-account-btn">
+                    Create Free Account & Access Dashboard
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Uniform Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <a href="index.html" onclick="window.scrollTo(0,0);" class="footer-logo-link">
+                    <span class="footer-logo-text">Demha</span>
+                </a>
+                <p class="footer-desc">Next-generation reputation protection and automated customer feedback management for local service businesses.</p>
+            </div>
+            
+            <div class="footer-right">
+                <p class="founder-info">
+                    Founder: <span class="founder-name">Ahmad Hassan Nazeer</span>
+                </p>
+                <div class="footer-links-col">
+                    <a href="https://wa.me/923206603904" target="_blank" class="footer-contact-link">
+                        <i class="fa-brands fa-whatsapp whatsapp-icon"></i> +92 320 660 3904
+                    </a>
+                    <a href="mailto:ahmadhassannazeer111@gamil.com" class="footer-contact-link">
+                        <i class="fa-regular fa-envelope email-icon"></i> ahmadhassannazeer111@gamil.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            &copy; 2026 Demha. All rights reserved. Built with precision for global service providers.
+        </div>
+    </footer>
+
+    <!-- Linking Separate JS File -->
+    <script src="js/index.js"></script>
+</body>
+</html>
 
     <!-- How Demha Works Blog Box (Updated to Real Workflow) -->
     <section class="blog-preview-section" style="max-width: 900px; margin: 0 auto 40px auto; padding: 0 20px;">
