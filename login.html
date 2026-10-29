@@ -1,35 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Demha</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="stylesheet" href="css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demha - System Upgrade</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --gold-primary: #d4af37;
+      --gold-dark: #b89123;
+      --border-gold: #ebdcc4;
+      --bg-warm: #fdfbf7;
+      --text-dark: #1f1d1a;
+      --text-muted: #666666;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-warm);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-dark);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .maintenance-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 50px 35px;
+      max-width: 500px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.12);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon-wrapper {
+      width: 75px;
+      height: 75px;
+      background: #faf8f3;
+      border: 2px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px auto;
+      color: var(--gold-dark);
+      font-size: 30px;
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+    }
+
+    .brand-title {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #fff8e8;
+      color: var(--gold-dark);
+      border: 1px solid var(--border-gold);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+
+    .maintenance-text {
+      margin: 0 0 25px 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: #999999;
+      border-top: 1px dashed var(--border-gold);
+      padding-top: 20px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-   <header class="global-header" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
-            <img src="images/logo.png" alt="Demha Logo" class="brand-logo">
-            <span style="color: #000 !important; font-weight: 800; font-size: 22px; font-family: sans-serif;">Demha</span>
-        </a>
-    </header>
 
-    <div class="login-container">
-        <h2>Welcome Back</h2>
-        <p class="brand-subtitle">Sign in to your Demha account</p>
-        <form id="loginForm">
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="loginEmail" required placeholder="name@business.com">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="loginPassword" required placeholder="••••••••">
-            </div>
-            <button type="submit" class="btn-primary">Sign In</button>
-        </form>
+  <div class="maintenance-card">
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-gears fa-spin" style="animation-duration: 6s;"></i>
     </div>
-    <script src="js/login.js"></script>
+    
+    <h1 class="brand-title">Demha</h1>
+    <div class="status-badge"><i class="fa-solid fa-hammer"></i> System Upgrade in Progress</div>
+    
+    <p class="maintenance-text">
+      We are currently upgrading our core infrastructure to bring you a faster, more secure, and unbreakable review management experience. Our systems will be back online shortly with powerful new features!
+    </p>
+
+    <div class="footer-note">
+      Thank you for your patience. If you have urgent inquiries, reach out directly to support.
+    </div>
+  </div>
+
 </body>
 </html>
